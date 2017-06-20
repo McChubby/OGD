@@ -35,11 +35,16 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
       document.addEventListener("resume", onResume, false);
+      document.addEventListener("pause", onPause, false);
         // window.open = cordova.InAppBrowser.open;
         window.open('https://ingeest.mijnquarant.nl/onderweg/');
         // app.receivedEvent('deviceready');
     },
     onResume: function(){
+      window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+    },
+
+    onPause: function(){
       window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
     },
     // Update DOM on a Received Event
