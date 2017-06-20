@@ -20,6 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        var go2Quarant = window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+        window.onfocus(go2Quarant);
     },
     // Bind Event Listeners
     //
@@ -36,8 +38,7 @@ var app = {
         // window.open = cordova.InAppBrowser.open;
         // window.open('https://ingeest.mijnquarant.nl/onderweg/')
 
-        var go2Quarant = window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
-        window.onfocus(go2Quarant);
+
         // app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -45,7 +46,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
+        window.onfocus(go2Quarant);
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
