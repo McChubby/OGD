@@ -21,7 +21,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
         var go2Quarant = window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
-        window.onfocus(go2Quarant);
+        window.onload(go2Quarant);
     },
     // Bind Event Listeners
     //
@@ -46,7 +46,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-        window.onfocus(go2Quarant);
+        window.onload(go2Quarant);
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
