@@ -35,8 +35,9 @@ var app = {
     onDeviceReady: function() {
         // window.open = cordova.InAppBrowser.open;
         // window.open('https://ingeest.mijnquarant.nl/onderweg/')
-        window.close();
-        window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+
+        var go2Quarant = window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+        window.onfocus(go2Quarant);
         // app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
