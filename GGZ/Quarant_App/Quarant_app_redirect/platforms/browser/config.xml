@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>Quarant_app_redirect</name>
+    <name>Quarant Onderweg</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+      Redirect application developed to accommodate GGZ with there MDM.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="ruan.kok@ogd.nl" href="http://jaruko.nl">
+        OGD
     </author>
     <content src="index.html" />
     <access origin="*" />
