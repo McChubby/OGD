@@ -36,7 +36,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
         // window.open = cordova.InAppBrowser.open;
         window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
         // app.receivedEvent('deviceready');
@@ -54,7 +53,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-        window.onload(go2Quarant);
+         
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
