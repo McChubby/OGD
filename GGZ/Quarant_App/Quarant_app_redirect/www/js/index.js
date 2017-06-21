@@ -41,11 +41,11 @@ var app = {
         // app.receivedEvent('deviceready');
     },
     onResume: function(){
-      window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+      window.location.replace("https://ingeest.mijnquarant.nl/onderweg/");
     },
 
     onPause: function(){
-      window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+      window.open("https://ingeest.mijnquarant.nl/onderweg/");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

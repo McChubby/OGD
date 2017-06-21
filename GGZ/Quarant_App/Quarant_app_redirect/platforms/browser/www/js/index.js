@@ -20,8 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        var go2Quarant = window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
-        window.onload(go2Quarant);
+        window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
     },
     // Bind Event Listeners
     //
@@ -35,11 +34,18 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+      document.addEventListener("resume", onResume, false);
+      document.addEventListener("pause", onPause, false);
         // window.open = cordova.InAppBrowser.open;
-        // window.open('https://ingeest.mijnquarant.nl/onderweg/')
-
-
+        window.open('https://ingeest.mijnquarant.nl/onderweg/');
         // app.receivedEvent('deviceready');
+    },
+    onResume: function(){
+      window.location.replace("https://ingeest.mijnquarant.nl/onderweg/");
+    },
+
+    onPause: function(){
+      window.open("https://ingeest.mijnquarant.nl/onderweg/");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
