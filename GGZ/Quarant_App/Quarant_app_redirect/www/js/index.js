@@ -37,15 +37,16 @@ var app = {
       document.addEventListener("resume", onResume, false);
       document.addEventListener("pause", onPause, false);
         // window.open = cordova.InAppBrowser.open;
-        window.open('https://ingeest.mijnquarant.nl/onderweg/');
+        window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
         // app.receivedEvent('deviceready');
     },
     onResume: function(){
-      window.location.replace("https://ingeest.mijnquarant.nl/onderweg/");
+      window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
     },
 
     onPause: function(){
-      window.open("https://ingeest.mijnquarant.nl/onderweg/");
+      
+      // window.open("https://ingeest.mijnquarant.nl/onderweg/");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
