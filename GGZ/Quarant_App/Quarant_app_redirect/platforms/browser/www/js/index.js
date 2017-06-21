@@ -28,14 +28,15 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("resume", this.onResume, false);
+        document.addEventListener("pause", this.onPause, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-      document.addEventListener("resume", onResume, false);
-      document.addEventListener("pause", onPause, false);
+
         // window.open = cordova.InAppBrowser.open;
         window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
         // app.receivedEvent('deviceready');
@@ -45,7 +46,7 @@ var app = {
     },
 
     onPause: function(){
-      
+
       // window.open("https://ingeest.mijnquarant.nl/onderweg/");
     },
     // Update DOM on a Received Event
