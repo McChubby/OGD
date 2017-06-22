@@ -20,7 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        window.location.href="https://ingeest.mijnquarant.nl/onderweg/";
+        window.location.href="https://145.121.63.161:38051/devmnt/#/login";
     },
     // Bind Event Listeners
     //
@@ -37,11 +37,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         // window.open = cordova.InAppBrowser.open;
-        window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
+        window.location.href='https://145.121.63.161:38051/devmnt/#/login';
         // app.receivedEvent('deviceready');
     },
     onResume: function(){
-      window.location.href='https://ingeest.mijnquarant.nl/onderweg/';
+      window.location.href='https://145.121.63.161:38051/devmnt/#/login';
     },
 
     onPause: function(){
@@ -53,7 +53,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-         
+
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
