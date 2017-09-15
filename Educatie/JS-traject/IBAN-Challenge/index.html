@@ -1,0 +1,36 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<div class="container">
+    <div>
+        <h1>IBAN calculator</h1>
+        <p>Kies eerst je bank, vul daarna je rekeningnummer in en klik op 'genereer IBAN'.</p>
+        <p>We gaan er hier voor het gemak even van uit dat iemand alleen nummers invoert. In de praktijk moet hier uiteraard wel een restrictie en controle op zitten.</p>
+        <p>Voor info en hints, zie de JavaScript comments.</p>
+        <p>Zoek je een extra uitdaging? Bouw dan ook een IBAN validatiefunctie die controleert of het opgegeven nummer inderdaad een geldige IBAN is (zie IBAN pagina op b.v. wikipedia).</p>
+    </div>
+    <div class="well well-lg col-md-8">
+        <form name="ibanForm" id='ibanForm' method="POST">
+            <div class="form-group">
+                <label for="bankSelect">Kies je bank:</label>
+                <select name="bankSelect" id='bankSelect' class="form-control">
+                    <option value="ABNAMRO">ABN Amro</option>
+                    <option value="DEMIR">Demir-Halk Bank</option>
+                    <option value="INGBANK">ING Bank</option>        
+                    <option value="RABOBANK">Rabobank</option>
+                    <option value="SNSBANK">SNS Bank</option>
+                    <option value="LANSCHOT">Van Lanschot Bankiers</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rekeningnummer">Je rekeningnummer:</label>
+                <input type="text" name="rekeningnummer" id="rekeningnummer" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Genereer IBAN</button>
+            </div>            
+        </form>
+        <div id="iban"></div>
+    </div>
+</div>
+<script src="script.js"></script>
