@@ -37,19 +37,52 @@ function genereerIBAN(oEvent) {
 // de bankCode kun je halen uit de globale 'bankIdentificatie' array.
 // We zouden de bankCode natuurlijk ook gewoon in de <option>s van de <select> kunnen plaatsen.. 
 // maar dan hoef je niet te oefenen met arrays :)
-function bepaalBankCode(bank) {
+function bepaalBankCode(gekozenBank) {
     var bankCode = '';
     
     // haal hier de bankCode op uit 'bankIdentificatie'
-    
+    for (var i=0; i < bankIdentificatie.length; i++){
+       if (gekozenBank == bankIdentificatie[i][0]){
+           bankCode += bankIdentificatie[i][1];
+       }
+    }
     return bankCode;
 }
 
 // Maak van het 7- of 9-cijferige nummer een 10-cijferig rekeningnummer
 function bepaalHeleRekeningNummer(rekeningNummer) {
+    // rekeningnummer variabele moet 10 tekens lang zijn, voor aanpasbaarheid is het gebruiken van een variabele wenselijk, 
+     var oLengte = 10;
     
     // zorg er hier voor dat het rekeningnummer altijd 10 cijfers lang is, eventueel met nullen ervoor
+    // lengte controleren
+    var overshot = [(rekeningNummer.length - oLengte),false];
+    var teKort = [(oLengte- rekeningNummer.length),false];
+
     
+    // voeg nullen toe bij een te kort, trim het overschot van oLengte
+    while(rekeningNummer.length != oLengte){
+        if (rekeningNummer.length > oLengte){
+            rekeningNummer = rekeningNummer.substring(0, rekeningNummer.length -1);
+            overshot[1] = true;
+        } else if(rekeningNummer.length < oLengte){
+            var nulToevoegen = '0';
+            rekeningNummer = nulToevoegen+rekeningNummer;  
+            teKort[1] = true;  
+        }
+    }
+
+    // controleer of er een overshot of tekort heeft plaats gevonden, is dit niet het geval of is gecorrigeerd en bestaat het niet meer, verwijder de vorige foutmelding.
+    if (overshot[1] === true){
+        document.getElementById("error").innerHTML = 'Let op: u heeft een te lang rekeningnummer opgegeven, de laatste '+ overshot[0] +' tekens zijn verwijderd!';
+        overshot[1] = false;
+    } else if (teKort[1] === true){
+        document.getElementById("error").innerHTML = 'Let op: u heeft een te kort rekeningnummer opgegeven, er zijn '+ teKort[0] +' tekens toegevoegd';
+        teKort[1] = false;
+    } else {
+        document.getElementById("error").innerHTML = null;
+    }
+
     return rekeningNummer;    
 }
 
