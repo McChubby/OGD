@@ -41,6 +41,7 @@ function bepaalBankCode(gekozenBank) {
     var bankCode = '';
     
     // haal hier de bankCode op uit 'bankIdentificatie'
+    // Voor elke Bank kijk of het overeen komt met de geselecteerde bank en geef de bankIdentificatie(bankCode) terug.
     for (var i=0; i < bankIdentificatie.length; i++){
        if (gekozenBank == bankIdentificatie[i][0]){
            bankCode += bankIdentificatie[i][1];
@@ -56,6 +57,9 @@ function bepaalHeleRekeningNummer(rekeningNummer) {
     
     // zorg er hier voor dat het rekeningnummer altijd 10 cijfers lang is, eventueel met nullen ervoor
     // lengte controleren
+
+    // Voor het schakelen tussen Error messages heb ik twee arrays in het leven geroepen, voor Overshot en Tekort.
+    // Tijdens het commenten in mijn code bedenk ik mij dat dit ook in één array had gekund...
     var overshot = [(rekeningNummer.length - oLengte),false];
     var teKort = [(oLengte- rekeningNummer.length),false];
 
@@ -72,7 +76,7 @@ function bepaalHeleRekeningNummer(rekeningNummer) {
         }
     }
 
-    // controleer of er een overshot of tekort heeft plaats gevonden, is dit niet het geval of is gecorrigeerd en bestaat het niet meer, verwijder de vorige foutmelding.
+    // controleer of er een overshot of tekort heeft plaats gevonden, is dit niet het geval of is dit gecorrigeerd en bestaat het niet meer, verwijder de vorige foutmelding.
     if (overshot[1] === true){
         document.getElementById("error").innerHTML = 'Let op: u heeft een te lang rekeningnummer opgegeven, de laatste '+ overshot[0] +' tekens zijn verwijderd!';
         overshot[1] = false;
@@ -99,20 +103,32 @@ function bepaalControleGetal(bankCode, landCode, rekeningNummer) {
     var nummerAlsString = bankCode + rekeningNummer + landCode;
     // In de geconverteerdeString zijn letters vervangen door hun getalwaarde
     // Hierbij moet A de waarde 10 krijgen, B wordt 11, C = 12, etc)
+
     var geconverteerdeString = '';
-    
-    // Een simpele manier om dit te doen is b.v. door elk karakter in nummerAlsString te bekijken en
-    // te controleren of dit een getal is of niet (met isNaN: isNaN(3) = false, isNaN('d') = true).
-    // Vervolgens kun je getallen direct toevoegen aan de geconverteerde string, letters moet je eerst omzetten
-    // voordat je ze toe kunt voegen.
-    // Hint: 'ABCDEFG'.charCodeAt(2) - 'A'.charCodeAt(0) geeft als resultaat 2, want 'C' - 'A' = 67 - 65 = 2;
-    // A moet 10 worden, B = 11, C = 12, etc.
-    
-    
+
+        // Voor elke character in de string, controleer of het om een letter gaat of een cijfer. Wijzig dit naar een controlegetal met behulp van de unicode
+        for (var i=0; i < nummerAlsString.length; i++){
+            if (isNaN(nummerAlsString[i])){                        
+                var charNaarNummer = (nummerAlsString[i].charCodeAt() - 'A'.charCodeAt()) + 10;
+                geconverteerdeString += charNaarNummer;
+
+            } else {
+                geconverteerdeString += nummerAlsString[i];
+            }
+        };
+      
     // Voeg nu twee nullen toe aan het einde en gebruik mod97 i.p.v. %97
+    geconverteerdeString += "00" 
+    var iban = geconverteerdeString;
+    var controleGetal = mod97(iban);
     
-    // bepaal het controlegetal en return dit (98 - het resultaat van de mod97, altidj twee cijfers)
+    // bepaal het controlegetal en return dit (98 - het resultaat van de mod97, altijd twee cijfers)
+    controleGetal = 98 - controleGetal;
     
+    if (controleGetal < 9){
+        controleGetal = '0'+ controleGetal;
+    }
+     
     return controleGetal;    
 }
 
@@ -121,7 +137,7 @@ function bepaalControleGetal(bankCode, landCode, rekeningNummer) {
 function mod97(iban) {
     var remainder = iban;
     var block;
-
+   
     while (remainder.length > 2) {
         block = remainder.slice(0, 9);
         remainder = parseInt(block, 10) % 97 + remainder.slice(block.length);
