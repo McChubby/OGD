@@ -36,7 +36,7 @@ function toString(gekozenBoek){
     // console.log(selectie);
     
     var string = selectie.titel+" van "+selectie.auteur+" bevat "+selectie.paginas+" pagina's en heeft "+selectie.likes+" likes.";
-    return string
+    return string;
 }
 // **************************************************
 
