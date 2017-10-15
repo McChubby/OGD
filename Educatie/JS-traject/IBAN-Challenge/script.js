@@ -2,7 +2,7 @@
 document.getElementById('ibanForm').addEventListener('submit', genereerIBAN);
 
 // Hiermee kan je string de bank code ophalen
-let bankIdentificatie = [
+const bankIdentificatie = [
   ['ABNAMRO', 'ABNA'],
   ['INGBANK', 'INGB'],
   ['RABOBANK', 'RABO'],
@@ -21,19 +21,19 @@ function genereerIBAN(oEvent) {
   // (3) de rekeningidentificatie
   // Dit onderdeel bestaat uit het relevante deel
   // uit de globale variabele 'bankIdentificatie' en het rekeningnummer.
-  //    Het rekeningnummer moet 10 tekens lang zijn. Is het korter, zet er dan nullen voor.    
+  //    Het rekeningnummer moet 10 tekens lang zijn. Is het korter, zet er dan nullen voor.
   const landCode = 'NL';
   let rekeningNummer = document.getElementById('rekeningnummer').value;
   const bankSelect = document.getElementById('bankSelect');
   const gekozenBank = bankSelect.options[bankSelect.selectedIndex].value;
   const bankCode = bepaalBankCode(gekozenBank);
   rekeningNummer = bepaalHeleRekeningNummer(rekeningNummer);
-  const controleGetal      = bepaalControleGetal(bankCode, landCode, rekeningNummer);
-  document.getElementById("iban").innerHTML = 'Je IBAN is: ' + landCode + controleGetal + bankCode + rekeningNummer;
+  const controleGetal = bepaalControleGetal(bankCode, landCode, rekeningNummer);
+  document.getElementById('iban').innerHTML = `Je IBAN is: ${landCode}${controleGetal}${bankCode}${rekeningNummer}`;
 }
 
 // de bankCode kun je halen uit de globale 'bankIdentificatie' array.
-// We zouden de bankCode natuurlijk ook gewoon in de <option>s van de <select> kunnen plaatsen.. 
+// We zouden de bankCode natuurlijk ook gewoon in de <option>s van de <select> kunnen plaatsen..
 // maar dan hoef je niet te oefenen met arrays :)
 function bepaalBankCode(gekozenBank) {
   let bankCode = '';
@@ -58,14 +58,14 @@ function bepaalHeleRekeningNummer(rekeningNummer) {
   // lengte controleren
   // Voor het schakelen tussen Error messages zijn twee arrays, Overshot en Tekort.
   // Tijdens het commenten in mijn code bedenk ik mij dat dit ook in één array had gekund...
-  let overschot = (rekeningNummer.length - lengteIBAN) > 0;
+  const overschot = (rekeningNummer.length - lengteIBAN) > 0;
   let aantalTekens = 0;
   // voeg nullen toe bij een te kort, trim het overschot van lengteIBAN
   while (rekeningNummer.length !== lengteIBAN) {
     if (overschot) {
       rekeningNummer = rekeningNummer.slice(0, -1);
     } else {
-      rekeningNummer = '0'+rekeningNummer;   
+      rekeningNummer = `0${rekeningNummer}`;
     }
     aantalTekens += 1;
   }
@@ -76,10 +76,10 @@ function bepaalHeleRekeningNummer(rekeningNummer) {
     if (overschot) {
       document.getElementById('error').innerHTML = `Let op: u heeft een te lang rekeningnummer opgegeven, de laatste ${aantalTekens} tekens zijn verwijderd!`;
     } else {
-      document.getElementById("error").innerHTML = `Let op: u heeft een te kort rekeningnummer opgegeven, er zijn ${aantalTekens} tekens toegevoegd`;
+      document.getElementById('error').innerHTML = `Let op: u heeft een te kort rekeningnummer opgegeven, er zijn ${aantalTekens} tekens toegevoegd`;
     }
   } else {
-    document.getElementById("error").innerHTML = null;
+    document.getElementById('error').innerHTML = null;
   }
   return rekeningNummer;
 }
@@ -99,11 +99,11 @@ function bepaalControleGetal(bankCode, landCode, rekeningNummer) {
   // In de geconverteerdeString zijn letters vervangen door hun getalwaarde
   // Hierbij moet A de waarde 10 krijgen, B wordt 11, C = 12, etc)
   let geconverteerdeString = '';
-  // Voor elke character in de string, controleer of het om 
+  // Voor elke character in de string, controleer of het om
   // een letter gaat of een cijfer. Wijzig dit naar een controlegetal met behulp van de unicode
   for (let i = 0; i < nummerAlsString.length; i += 1) {
-    if (isNaN(nummerAlsString[i])) {                        
-      let charNaarNummer = (nummerAlsString[i].charCodeAt() - 'A'.charCodeAt()) + 10;
+    if (isNaN(nummerAlsString[i])) {
+      const charNaarNummer = (nummerAlsString[i].charCodeAt() - 'A'.charCodeAt()) + 10;
       geconverteerdeString += charNaarNummer;
     } else {
       geconverteerdeString += nummerAlsString[i];
@@ -111,12 +111,12 @@ function bepaalControleGetal(bankCode, landCode, rekeningNummer) {
   }
   // Voeg nu twee nullen toe aan het einde en gebruik mod97 i.p.v. %97
   geconverteerdeString += '00';
-  let iban = geconverteerdeString;
-  let modGetal = mod97(iban);  
+  const iban = geconverteerdeString;
+  let modGetal = mod97(iban);
   // bepaal het modGetal en return dit (98 - het resultaat van de mod97, altijd twee cijfers)
-  modGetal = 98 - modGetal;  
+  modGetal = 98 - modGetal;
   if (modGetal < 10) {
-    modGetal = '0' + modGetal;
+    modGetal = `0${modGetal}`;
   }
   return modGetal.toString();
 }
