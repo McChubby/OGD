@@ -1,5 +1,5 @@
 // Boek constructor en prototype
-const Boeken = {   
+const Boeken = {
   addBoek(boek) {
     boek.titel = (typeof boek.titel !== 'undefined') ? boek.titel: 'Boek zonder kaft',
     boek.auteur = (typeof boek.auteur !== 'undefined') ? boek.auteur: 'John Doe',
