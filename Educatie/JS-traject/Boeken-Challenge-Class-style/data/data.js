@@ -1,4 +1,9 @@
-// let boekenLijst = [];
+function setData() {
+  const boekenKast = []
+  boekenKast.push(new Boek({ titel: 'Harry Potter De Gevangene As Kar en Ban', auteur: 'J.K.Rowlings', aantalAuteurs: 3 }));
+} 
+
+
 
 // boekenLijst.push(new Boek({
 //   titel: 'De huiswerkopdracht',
