@@ -31,7 +31,7 @@ for (var i = 0; i < boekenKast.length; i ++) {
   selectBoek[selectBoek.length] = new Option(this.boek.titel, i);
 }
 
-const gekozenBoek = selectBoek.options[selectBoek.selectedIndex].value;
+let gekozenBoek = selectBoek.options[selectBoek.selectedIndex].value;
 
-document.getElementById('dislike').addEventListener('click', () => { boekenKast[gekozenBoek].dislike(); });
-document.getElementById('like').addEventListener('click', () => { boekenKast[gekozenBoek].like(); });
+document.getElementById('dislike').addEventListener('click', () => { let gekozenBoek = selectBoek.options[selectBoek.selectedIndex].value; boekenKast[gekozenBoek].dislike(); });
+document.getElementById('like').addEventListener('click', () => { let gekozenBoek = selectBoek.options[selectBoek.selectedIndex].value; boekenKast[gekozenBoek].like(); });

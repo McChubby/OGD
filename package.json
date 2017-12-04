@@ -4,6 +4,7 @@
   "description": "Javascript traject",
   "main": "index.js",
   "dependencies": {
+    "create-react-app": "^1.4.3",
     "prettier": "^1.4.4"
   },
   "devDependencies": {
