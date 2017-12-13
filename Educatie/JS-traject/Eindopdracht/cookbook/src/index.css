@@ -1,5 +1,18 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.category{
+  width: 100%;
+  color: #f2f2f2;
+}
+
+.navbar {
+  width: 100%;
+  height: 24px;
+  text-align: center;
+  padding: 18px 0 18px 0;
+  font: italic 24px "Helvetica";
+  color:#f2f2f2;
+  background-color: #2D9CDB;
+}
+
+.wrapper {
+  width: 100%;
 }
