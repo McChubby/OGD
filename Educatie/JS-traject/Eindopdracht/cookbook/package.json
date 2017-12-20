@@ -14,15 +14,14 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
+    "history": "^4.2.0",
+    "re-base": "2.2.0",
     "react": "^16.2.0",
+    "react-addons-css-transition-group": "15.3.2",
     "react-browser-router": "^2.0.3",
     "react-dom": "^16.2.0",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "history": "4.2.0",
-    "re-base": "2.2.0",
-    "react-addons-css-transition-group": "15.3.2"
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start": "react-scripts start",
