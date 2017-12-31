@@ -1,16 +1,76 @@
-.category{
-  width: 100%;
-  color: #f2f2f2;
+body{
+  padding:0;
+  margin:0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar {
+.wrapper{
+  max-width:411px;
+  max-height: 731px;
+  background: crimson;
+}
+
+.header{
   width: 100%;
   height: 24px;
   text-align: center;
   padding: 18px 0 18px 0;
-  font: italic 24px "Helvetica";
+  font: italic 24px 'Helvetica';
   color:#f2f2f2;
   background-color: #2D9CDB;
+}
+.cuisine{
+  background: yellow;
+  color: black;
+  display: flex;
+  flex: 1;
+}
+
+.cuisine-option {
+  display: flex;
+  flex: 1;
+}
+
+.cuisine-image{
+  float: left;
+  flex: 0.8;
+  max-height: 190px;
+}
+
+.cuisine-image img{
+  max-width: 340px; 
+  /* max-height: 190px; */
+  padding:0;
+  margin:0;
+  /* max-height: 190px; */
+}
+
+
+.cuisine-name {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-width: 71px;
+  flex:0.2;
+  flex-direction: column;
+  background: #2D9CDB;
+  text-align: center;
+}
+.cuisine-name p {
+  /* font: 20px Roboto; */
+  color: white;
+  transform: rotate(90deg);
+  /* margin: 0; */
+}
+
+
+.navbar {
+  width: 100%;
+  
 }
 
 .wrapper {

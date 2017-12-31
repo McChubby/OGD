@@ -1,10 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route , Switch } from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+// import { createBrowserHistory as history } from 'react-router-dom';
 
 // Imported Components
-import App from './components/App';
 import WelcomeChef from './components/WelcomeChef';
+import App from './components/App';
+import Recipes from './components/Recipes';
 import NotFound from './components/NotFound'
 
 import './css/index.css';
@@ -19,8 +21,10 @@ const Root = () => {
       <div>
         <Switch>
           <Route exact path="/" component={WelcomeChef}/>
-          <Route path="/CookBook/:bookId" component={App}/>
-          <Route component={NotFound}/>
+            <Route path="/CookBook/:bookId" component={App}/>
+            <Route path="/CookBook/:bookId/:cuisineId" component={Recipes}/>
+            {/* All other routes */}
+            <Route path="*" component={NotFound}/>
         </Switch>
       </div>
     </Router>
