@@ -2,7 +2,7 @@ Eindopdracht voor het JavaScript Traject binnen OGD.
 
 ## Table of Contents
 
-- [CookBook](#CookBook)
+- [CookBook](#cookbook)
 
 
 ## CookBook
