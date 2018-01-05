@@ -1,46 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import cuisineStyle from '../css/index.css';
 
 class Cuisine extends React.Component {
-    constructor(){
-      super();
-
-      this.goToRecipes = this.goToRecipes.bind(this);
-    }
-    goToRecipes(){
-      const { details } = this.props;
-      
-      console.log(`Going to cuisine: ${details.name}!`);
-
-      const cuisineId = details.name;
-      console.log(`Going to ${cuisineId}`);
-      // let's get the current URL & save it to a const.
-      const currentURL = this.location.pathname;
-      console.log(`Current URL: ${currentURL}`);
-
-      // We're going to transition from / to /CookBook/:bookId
-      this.props.history.push(`/CookBook/:bookId/${cuisineId}`);
-    }
-  render(){
+  render() {
     const { details } = this.props;
-    return(
-      <li   onClick= { () => this.goToRecipes()} 
-            className="cuisine-option"
-            >
-        <div className="cuisine-image">
-          <img src={details.image} alt={details.name} details={details.name} />
+    const availableRecipes = details.recipes;
+    return (
+      <div className="cuisine-wrapper" onClick={() => this.props.goToRecipe(availableRecipes)}>
+        <div className="cuisine-option">
+          <div className="cuisine-image">
+            <img src={details.image} alt={details.name} details={details.name} />
+          </div>
+          <div className="cuisine-name">
+            <div className="cuisine-name-tag">
+              <p>{details.name}</p>
+            </div>
+          </div>
         </div>
-        <div className="cuisine-name">
-          <p>{details.name}</p>
-        </div>
-      </li>
-    )
+      </div>
+    );
   }
 }
 
-Cuisine.contextTypes ={
-  router: PropTypes.object
-}
+Cuisine.propTypes = {
+  // location: PropTypes.string.isRequired,
+};
+
+Cuisine.contextTypes = {
+  router: PropTypes.object,
+};
 
 
 export default Cuisine;

@@ -8,71 +8,153 @@ ul {
   padding: 0;
 }
 
-.wrapper{
-  max-width:411px;
-  max-height: 731px;
-  background: crimson;
-}
-
-.header{
-  width: 100%;
+.header {
+  width: 100vw;
+  max-width: 1233px;
   height: 24px;
+  margin: 0 auto;
   text-align: center;
+  
   padding: 18px 0 18px 0;
   font: italic 24px 'Helvetica';
   color:#f2f2f2;
   background-color: #2D9CDB;
+
 }
-.cuisine{
-  background: yellow;
-  color: black;
+
+.cookbook {
   display: flex;
+  height: 90vh;
+  max-width: 1233px;
+  margin: 0 auto;
+  perspective: 1000px;
+
+}
+
+.cuisine {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  max-width:30vw;
+  max-height: 80vh;
+  background: crimson;
+}
+
+.cuisine-wrapper {
+  
 }
 
 .cuisine-option {
   display: flex;
-  flex: 1;
-}
-
-.cuisine-image{
-  float: left;
-  flex: 0.8;
+  flex-direction: row;
+  flex-wrap: nowrap;
   max-height: 190px;
 }
 
+.cuisine-image{
+  flex: 0.8;
+  order: 1;
+}
+
 .cuisine-image img{
-  max-width: 340px; 
-  /* max-height: 190px; */
+  background-size: contain;
+  flex-direction: row;
+  max-height: 190px;
+  min-width: 340px;
   padding:0;
   margin:0;
-  /* max-height: 190px; */
 }
-
 
 .cuisine-name {
-  margin: 0;
-  padding: 0;
   display: flex;
-  min-width: 71px;
   flex:0.2;
-  flex-direction: column;
+  flex-direction: row;
+  order: 2;
   background: #2D9CDB;
   text-align: center;
+  white-space: nowrap;
 }
-.cuisine-name p {
-  /* font: 20px Roboto; */
-  color: white;
+
+.cuisine-name-tag{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cuisine-name-tag p {
+  display: flex;
+  justify-content: center;
   transform: rotate(90deg);
-  /* margin: 0; */
+  color: white;
+
 }
 
-
-.navbar {
-  width: 100%;
-  
+.recipes {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-width:30vw;
+  max-height: 80vh;
+  background: crimson;
 }
 
-.wrapper {
-  width: 100%;
+.recipe-wrapper {
+  height: 80px;
 }
+
+.recipe p {
+  font: bold 24px Roboto;
+  text-align: center;
+  color: white;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width:30vw;
+  max-height: 80vh;
+  background: #C4C4C4;
+}
+
+.dish-image{
+  display: flex;
+  order: 1;
+}
+
+.dish-image img{
+  background-size: contain;
+  flex-direction: row;
+  max-height: 231px;
+  min-width: 411px;
+  padding:0;
+  margin:0;
+}
+
+.dish-prep {
+  order: 2;
+  flex:1;
+  max-height: 60px;
+  max-height: 60px;
+  justify-content: center;
+  background: #FFFFFF;
+}
+
+.dish-prep p{
+  display: flex;
+  justify-content: center;
+  font: 18px Roboto;
+  font-style: italic;
+}
+
+.dish-card {
+  flex: 1;
+  order: 3;
+  min-height:  332px; 
+  margin: 8px 8px 8px 8px;
+  box-shadow: 4px 4px 4px;
+  background: #F2F2F2;
+
+}
+
