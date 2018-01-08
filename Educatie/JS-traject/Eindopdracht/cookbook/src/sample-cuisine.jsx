@@ -7,7 +7,7 @@ const cuisine = {
         name: 'Spaghetti Bolognese',
         image: 'http://img.taste.com.au/PXvnKf8Y/taste/2016/11/spaghetti-bolognaise-104579-1.jpeg',
         prep: 20, // always minutes
-        numberOfPeople: 4,
+        numberOfServings: 4,
         ingredients: {
           ingredient1: {
             name: 'rundergehakt',
@@ -126,7 +126,7 @@ const cuisine = {
         name: 'Spaghetti Bolognese',
         image: 'http://img.taste.com.au/PXvnKf8Y/taste/2016/11/spaghetti-bolognaise-104579-1.jpeg',
         prep: 20, // always minutes
-        numberOfPeople: 4,
+        numberOfServings: 4,
         ingredients: {
           ingredient1: {
             name: 'rundergehakt',

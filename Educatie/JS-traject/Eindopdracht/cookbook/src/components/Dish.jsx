@@ -13,16 +13,10 @@ class Dish extends React.Component {
 
   componentDidUpdate(e) {
     // console.log(e);
-    let numberOfPeople;
     // this.availableInfo.numberOfPeople ? numberOfPeople = this.availableInfo.numberOfPeople : '';
-    const ingredient = this.props.availableInfo.ingredients;
-    const amountOfPersons = this.props.persons;
-    const isChanged = amountOfPersons
-    console.log(amountOfPersons);
-    ingredient ? 
-      console.log(ingredient) && amountOfPersons ? console.log(amountOfPersons) 
-      : ''
-    :'' ;
+    // const ingredient = this.props.availableInfo.ingredients;
+    // const amountOfPersons = this.props.persons;
+    // const isChanged = amountOfPersons
     // const newIngredients = this.props.availableInfo.ingredients / this.state.persons;
     // console.log(newIngredients);
   }
@@ -50,11 +44,20 @@ class Dish extends React.Component {
   }
   renderIngredient(key) {
     const ingredient = this.props.availableInfo.ingredients[key];
-    const amountOfPersons = this.props.persons;
-    
+    const serveAmount = this.props.availableInfo.numberOfServings;
+    const currentServingsNeeded = this.props.persons;
+
+    // Calculating the ingredients per dish.
+    // Being able to update the ingredients based on the input of the user.
+    // --------------[Calculation]------------------------------------------------------
+    // Calculate the ingredient.amount by dividing it by the serveAmount, 
+    // this will give back the amount for one person.
+    // Multiply by the amount of the current serving needed
+
     return (
       <div key={key} >
-        {`${ingredient.amount ? `${ingredient.amount}` : ''} 
+        {/* Calculation for ingredients in next line -- */}
+        {`${ingredient.amount ? `${ (parseInt(ingredient.amount) / serveAmount) * currentServingsNeeded}` : ''} 
           ${ingredient.amountType ? `${ingredient.amountType}` : ''} 
           ${ingredient.name} `}
       </div>
