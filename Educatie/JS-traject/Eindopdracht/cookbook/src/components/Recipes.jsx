@@ -24,7 +24,7 @@ class Recipes extends React.Component {
                       style={recipeStyle}
                     />),
                   )          
-        : 'No Recipes added yet! Let\'s add some!' }
+        : '' }
 
       </div>
     );

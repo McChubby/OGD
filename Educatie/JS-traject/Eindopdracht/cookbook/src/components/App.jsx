@@ -14,30 +14,43 @@ class App extends React.Component {
     this.loadSamples = this.loadSamples.bind(this);
     this.goToRecipe = this.goToRecipe.bind(this);
     this.goToDish = this.goToDish.bind(this);
+    this.updatePersons = this.updatePersons.bind(this);
+    this.updateCount = this.updateCount.bind(this);
+    // this.incrementPersons = this.updatePersons.bind(this, 1);
+    // this.decrementPersons = this.updatePersons.bind(this, -1);
+
 
     this.state = {
       cuisines: {},
       availableRecipes: '',
       availableInfo: '',
+      persons: 4,
     };
+  }
+  updateCount(newCount) { 
+    this.setState(prevState => ({ persons: newCount }));
+  }
+
+  updatePersons(persons) {
+    this.setState({ persons: persons });
   }
 
   goToDish(availableInfo) {
-    console.log(`Loading the info from ${availableInfo}`);
+    // console.log(`Loading the info from ${availableInfo}`);
     this.setState({
       availableInfo: availableInfo,
     });
   }
 
   goToRecipe(availableRecipes) {
-    console.log(`Loading the recipes from ${availableRecipes}`);
+    // console.log(`Loading the recipes from ${availableRecipes}`);
     this.setState({
       availableRecipes: availableRecipes,
     });
   }
 
   loadSamples() {
-    console.log('started adding samples');
+    // console.log('started adding samples');
     this.setState({
       cuisines: sampleCuisines,
     });
@@ -69,6 +82,9 @@ class App extends React.Component {
           />
           <Dish
             availableInfo={this.state.availableInfo}
+            persons={this.state.persons}
+            updatePersons={this.updatePersons}
+            updateCount={this.updateCount}
           />
 
         </div>
