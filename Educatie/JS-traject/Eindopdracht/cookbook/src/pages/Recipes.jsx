@@ -1,5 +1,6 @@
 import React from 'react';
 import Recipe from '../components/Recipe';
+import Add from '../components/Add';
 class Recipes extends React.Component {
 
   render() {
@@ -11,6 +12,8 @@ class Recipes extends React.Component {
     const { availableRecipes } = this.props;
     return (
       <div className="recipes">
+
+        {console.log(this.props.availableRecipes)} 
         {this.props.availableRecipes ? 
             Object
                   .keys(availableRecipes)
@@ -25,7 +28,9 @@ class Recipes extends React.Component {
                     />),
                   )          
         : '' }
-
+        <div className="add-button-wrapper">
+          <Add what="recipe"/>
+        </div>
       </div>
     );
   }

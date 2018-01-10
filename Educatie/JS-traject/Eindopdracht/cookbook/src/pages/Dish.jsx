@@ -1,4 +1,5 @@
 import React from 'react';
+import Add from '../components/Add';
 // import Step from '../components/Step';
 
 class Dish extends React.Component {
@@ -105,6 +106,9 @@ class Dish extends React.Component {
                 : ''
               }
             </div>
+        </div>
+        <div className="add-button-wrapper">
+          <Add what="dish"/>
         </div>
       </div>
     );

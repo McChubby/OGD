@@ -1,32 +1,44 @@
 import React from 'react';
-import Header from './Header';
-import Cuisine from './Cuisine';
-import sampleCuisines from '../sample-cuisine';
+// import Header from './Header';
+import { Route } from 'react-router-dom'; 
+
+// import Cuisine from '../components/Cuisine';
+import Cuisines from '../pages/Cuisines';
+import Recipes from '../pages/Recipes';
+import Dish from '../pages/Dish';
+
+
+// Imported Components
+import WelcomeChef from '../pages/WelcomeChef';
+// import NotFound from '../pages/NotFound';
 // import base from '../base';
 
-import Recipes from '../components/Recipes';
-import Dish from '../components/Dish';
+// import Add from './Add';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.loadSamples = this.loadSamples.bind(this);
-    this.goToRecipe = this.goToRecipe.bind(this);
     this.goToDish = this.goToDish.bind(this);
     this.updatePersons = this.updatePersons.bind(this);
     this.updateCount = this.updateCount.bind(this);
-    // this.incrementPersons = this.updatePersons.bind(this, 1);
-    // this.decrementPersons = this.updatePersons.bind(this, -1);
-
+    // this.props.history = this.props.history.bind(this);
+    // this.availableRecipes = this.availableRecipes.bind(this);
 
     this.state = {
       cuisines: {},
-      availableRecipes: '',
+      availableRecipes: null,
       availableInfo: '',
       persons: 4,
     };
   }
+
+  setAvailableRecipes = (recipesFromCuisine) => {
+    this.setState({
+      availableRecipes: recipesFromCuisine,
+    });
+  }
+
   updateCount(newCount) { 
     this.setState(prevState => ({ persons: newCount }));
   }
@@ -42,53 +54,52 @@ class App extends React.Component {
     });
   }
 
-  goToRecipe(availableRecipes) {
-    // console.log(`Loading the recipes from ${availableRecipes}`);
-    this.setState({
-      availableRecipes: availableRecipes,
-    });
-  }
+ 
 
-  loadSamples() {
-    // console.log('started adding samples');
-    this.setState({
-      cuisines: sampleCuisines,
-    });
-  }
-  render() {
+  
+  render(props) {
     return (
       <div>
-        <Header />
         <div className="cookbook">
-          <div className="cuisine">
-            <div className="cuisine-options">
-              {
-                Object
-                  .keys(this.state.cuisines)
-                  .map(key =>
-                    (<Cuisine
-                      key={key}
-                      index={key}
-                      details={this.state.cuisines[key]}
-                      goToRecipe={this.goToRecipe}
-                    />),
-                  )
-              }
-            </div>
-          </div>
-          <Recipes 
+          <Route path="/" exact component={WelcomeChef} />
+          <Route path="/CookBook/:bookId/Dish" exact component={Dish} />
+          <Route 
+            path="/CookBook/:bookId/Recipes" 
+            exact component={ props => 
+              <Recipes 
+                availableRecipes={this.state.availableRecipes}
+                goToRecipe={this.goToRecipe}
+                goToDish={this.goToDish}
+              /> } />
+          <Route 
+            path="/CookBook/:bookId" 
+            exact component={ 
+              props => 
+              <Cuisines 
+                setAvailableRecipes={this.setAvailableRecipes}
+                history={props.history}
+                match={props.match}  
+              /> } />
+
+              
+          {/* All other routes */}
+          {/* <Route path="*" component={NotFound}/> */}
+        
+          {/* <Cuisines 
+          
+          /> */}
+          {/* <Recipes 
             availableRecipes={this.state.availableRecipes}
             goToDish={this.goToDish}
-          />
-          <Dish
+          /> */}
+          {/* <Dish
             availableInfo={this.state.availableInfo}
             persons={this.state.persons}
             updatePersons={this.updatePersons}
             updateCount={this.updateCount}
-          />
+          /> */}
 
         </div>
-          <button onClick={this.loadSamples}>Load Sample Cuisine</button>
       </div>
     );
   }

@@ -1,14 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import { BrowserRouter as Router} from 'react-router-dom'; 
 // import { createBrowserHistory as history } from 'react-router-dom';
 
-// Imported Components
-import WelcomeChef from './components/WelcomeChef';
 import App from './components/App';
-import NotFound from './components/NotFound';
-
 import './css/index.css';
+import Layout from './components/Layout';
 
 const Root = () => {
   return (
@@ -21,15 +18,9 @@ const Root = () => {
     // You can check out the API documentation for more details.
     // https://reacttraining.com/react-router/
     <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" component={WelcomeChef}/>
-            <Route path="/CookBook/:bookId" component={App}/>
-              
-            {/* All other routes */}
-            <Route path="*" component={NotFound}/>
-        </Switch>
-      </div>
+      <Layout>
+        <App />
+      </Layout>
     </Router>
   )
 }
