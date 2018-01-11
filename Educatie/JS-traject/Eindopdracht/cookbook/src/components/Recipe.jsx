@@ -13,9 +13,9 @@ class Recipe extends React.Component {
     };
     const { details } = this.props;
     return (
-      <div className="recipe-wrapper" style={recipeStyle} onClick={() => this.props.goToDish(details)}>
+      <div className="recipe-wrapper" style={recipeStyle} onClick={() => this.props.goToDish(details, details.name)}>
         <div className="recipe" >
-          <p>{this.props.details.name}</p>
+          <p>{details.name}</p>
         </div>
 
       </div>

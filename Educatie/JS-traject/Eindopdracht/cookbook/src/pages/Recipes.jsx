@@ -2,7 +2,16 @@ import React from 'react';
 import Recipe from '../components/Recipe';
 import Add from '../components/Add';
 class Recipes extends React.Component {
+  constructor(props){
+    super(props);
+    this.goToDish = this.goToDish.bind(this);
+  }
 
+  goToDish(availableInfo, recipeChoice) {
+    const dishId = recipeChoice;
+    this.props.setAvailableInfo(availableInfo);
+    this.props.history.push(`${this.props.match.url}/${dishId}`);
+  }
   render() {
     const recipeStyle = {
       display:`block`,
@@ -13,7 +22,6 @@ class Recipes extends React.Component {
     return (
       <div className="recipes">
 
-        {console.log(this.props.availableRecipes)} 
         {this.props.availableRecipes ? 
             Object
                   .keys(availableRecipes)
@@ -22,14 +30,13 @@ class Recipes extends React.Component {
                       key={key}
                       index={key}
                       details={availableRecipes[key]}
-                      goToRecipe={this.goToRecipe}
-                      goToDish={this.props.goToDish}
+                      goToDish={this.goToDish}
                       style={recipeStyle}
                     />),
                   )          
         : '' }
         <div className="add-button-wrapper">
-          <Add what="recipe"/>
+          <Add what="recipe" />
         </div>
       </div>
     );

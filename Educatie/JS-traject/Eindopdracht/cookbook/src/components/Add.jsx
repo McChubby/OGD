@@ -1,25 +1,24 @@
 import React from 'react';
+import AddForm from '../components/AddForm';
 
 class Add extends React.Component {
   constructor(){
     super();
-
     this.addForm = this.addForm.bind(this);
   }
 
-  addForm(event){
+  addForm(props) {
     const addWhat = this.props.what;
-
-    if (addWhat === 'recipe'){
-      alert('bam, Recipe time!');
-    } else if(addWhat ==='cuisine'){
-      alert('bam, Cuisine to be seen');
+    if (addWhat === 'recipe') {
+      return <AddForm whichForm={'recipe'} />
+    } else if(addWhat ==='cuisine') {
+      return <AddForm whichForm={'cuisine'} />
     } else {
-      alert('bam, dish best served cold.');
+      return <AddForm whichForm={'dish'} />
     }
 
   }
-  render(){
+  render() {
     return (
       <div className="add-button" onClick={this.addForm}>
         +

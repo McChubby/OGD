@@ -1,8 +1,6 @@
-import React from 'react';
-import { Route } from 'react-router-dom'; 
+import React from 'react'; 
 
 import Cuisine from '../components/Cuisine';
-import Recipes from '../pages/Recipes';
 import Add from '../components/Add';
 // import cuisineStyle from '../css/index.css';
 
@@ -13,17 +11,16 @@ class Cuisines extends React.Component {
 
     this.goToRecipe = this.goToRecipe.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
-    // this.goToRecipe = this.goToRecipe.bind(this);
 
     this.state = {
       cuisines: '',
     };
   }
-
-  goToRecipe(availableRecipes) {
-    // console.log(`Loading the recipes from ${availableRecipes}`);
+  
+  goToRecipe(availableRecipes, cuisineChoice) {
+    const cuisineId = cuisineChoice;
     this.props.setAvailableRecipes(availableRecipes);
-    this.props.history.push(`${this.props.match.url}/Recipes`);
+    this.props.history.push(`${this.props.match.url}/${cuisineId}`);
   }
 
   loadSamples() {
@@ -46,9 +43,9 @@ class Cuisines extends React.Component {
                   key={key}
                   index={key}
                   details={this.state.cuisines[key]}
-                  goToRecipe={this.goToRecipe}
                   history={this.props.history}
                   match={this.props.match}
+                  goToRecipe={this.goToRecipe}
                   setAvailableRecipes={this.props.setAvailableRecipes}
                 />),
               )

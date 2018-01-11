@@ -6,11 +6,9 @@ class Cuisine extends React.Component {
   render() {
     const { details } = this.props;
     const availableRecipes = details.recipes;
-    const redirectUrl = details;
-    // this.props.setAvailableRecipes(availableRecipes);
-    console.log(`Url: ${redirectUrl}`);
+
     return (
-      <div className="cuisine-wrapper" onClick={() => this.props.goToRecipe(availableRecipes)}>
+      <div className="cuisine-wrapper" onClick={() => this.props.goToRecipe(availableRecipes, details.name)}>
         <div className="cuisine-option">
           <div className="cuisine-image">
             <img src={details.image} alt={details.name} details={details.name} />

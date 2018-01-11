@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router} from 'react-router-dom'; 
+import { BrowserRouter as Router } from 'react-router-dom'; 
 // import { createBrowserHistory as history } from 'react-router-dom';
 
 import App from './components/App';
 import './css/index.css';
-import Layout from './components/Layout';
 
 const Root = () => {
   return (
@@ -18,9 +17,7 @@ const Root = () => {
     // You can check out the API documentation for more details.
     // https://reacttraining.com/react-router/
     <Router>
-      <Layout>
-        <App />
-      </Layout>
+      <App />
     </Router>
   )
 }

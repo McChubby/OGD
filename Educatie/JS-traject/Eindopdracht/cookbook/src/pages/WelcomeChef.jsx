@@ -19,7 +19,7 @@ class WelcomeChef extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="welcome-chef">
         <form className="cookbook-selector" onSubmit={e => this.goToCookBook(e)}>
           <h2>Please Enter A Name For Your CookBook</h2>
           <input
@@ -28,7 +28,7 @@ class WelcomeChef extends React.Component {
             defaultValue={getFunName()}
             ref={(input) => { this.cookbookInput = input; }}
           />
-          <button type="submit">Go to CookBook</button>
+          <button type="submit">ENTER</button>
         </form>
       </div>
     );
