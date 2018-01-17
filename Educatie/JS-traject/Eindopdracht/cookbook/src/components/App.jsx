@@ -19,11 +19,13 @@ class App extends React.Component {
 
     this.state = {
       cuisines: {},
+      currentCuisine: null,
       availableRecipes: null,
       availableInfo: '',
       persons: 4,
     };
   }
+
 
   setAvailableInfo = (infoFromRecipe) => {
     this.setState({
@@ -31,9 +33,10 @@ class App extends React.Component {
     })
   }
 
-  setAvailableRecipes = (recipesFromCuisine) => {
+  setAvailableRecipes = (recipesFromCuisine, index) => {
     this.setState({
       availableRecipes: recipesFromCuisine,
+      currentCuisine: index,
     });
   }
 
@@ -86,9 +89,11 @@ class App extends React.Component {
                 match={props.match}  
               >
                 <Recipes 
+                  ref={this.key}
                   history={props.history}
                   match={props.match}
                   availableRecipes={this.state.availableRecipes}
+                  currentCuisine = {this.state.currentCuisine}
                   setAvailableInfo={this.setAvailableInfo}
                 />
               </Layout> } 

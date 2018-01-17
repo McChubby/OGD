@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 class Cuisine extends React.Component {
   render() {
-    const { details } = this.props;
+    const { details, index } = this.props;
     const availableRecipes = details.recipes;
 
     return (
-      <div className="cuisine-wrapper" onClick={() => this.props.goToRecipe(availableRecipes, details.name)}>
+      <div className="cuisine-wrapper" onClick={() => this.props.goToRecipe(availableRecipes, details.name, index)}>
         <div className="cuisine-option">
           <div className="cuisine-image">
             <img src={details.image} alt={details.name} details={details.name} />

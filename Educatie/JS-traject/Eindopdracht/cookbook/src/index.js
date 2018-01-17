@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import './css/index.css';
 
-const Root = () => {
+const Root = (props) => {
   return (
     // <Match> and <Miss> were components in the alpha release of React Router v4.
     // In the beta, <Match> has been renamed <Route> (and its props have changed so that
@@ -17,7 +17,7 @@ const Root = () => {
     // You can check out the API documentation for more details.
     // https://reacttraining.com/react-router/
     <Router>
-      <App />
+      <App match={props.match} />
     </Router>
   )
 }

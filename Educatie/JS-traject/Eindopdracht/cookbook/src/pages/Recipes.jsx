@@ -1,6 +1,7 @@
 import React from 'react';
 import Recipe from '../components/Recipe';
 import Add from '../components/Add';
+import base from '../base';
 class Recipes extends React.Component {
   constructor(props){
     super(props);

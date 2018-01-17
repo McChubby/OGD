@@ -1,4 +1,5 @@
 import React from 'react'; 
+import base from '../base';
 
 import Cuisine from '../components/Cuisine';
 import Add from '../components/Add';
@@ -16,10 +17,35 @@ class Cuisines extends React.Component {
       cuisines: '',
     };
   }
+
+  componentWillMount() {
+    this.ref = base.syncState(`${this.props.match.params.bookId}`
+    , {
+      context: this,
+      state:'cuisines',
+    });
   
-  goToRecipe(availableRecipes, cuisineChoice) {
+    const localStorageRef = localStorage.getItem(`book-${this.props.match.params.bookId}`);
+
+    if(localStorageRef) {
+      this.setState({
+        cuisines: JSON.parse(localStorageRef),
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem(`book-${this.props.match.params.bookId}`,
+    JSON.stringify(nextState.cuisines))
+  }
+
+  goToRecipe(availableRecipes, cuisineChoice, index) {
     const cuisineId = cuisineChoice;
-    this.props.setAvailableRecipes(availableRecipes);
+    this.props.setAvailableRecipes(availableRecipes, index);
     this.props.history.push(`${this.props.match.url}/${cuisineId}`);
   }
 
