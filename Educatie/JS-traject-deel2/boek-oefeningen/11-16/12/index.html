@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <header>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script
+      src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+      crossorigin="anonymous"></script>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </header>
+  <body>
+    <hgroup name="canvas" class="container">
+      <div class="row">
+        <section class="container">
+          <hr>
+          <h1>Lesson 1 drawing by using the <code>&lt;canvas&gt;</code> element</h1> 
+          <hr>
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <p>
+            The only two significant attributes for the <code>&lt;canvas&gt;</code> element are <i>height</i> and <i>width</i>.
+          </p>
+              <h3>Example:</h3>
+              <pre><code>
+                &lt;canvas id="myCanvas" width="800" height="600"&gt;
+                  You need a browser that supports HTML5!
+                &lt;/canvas&gt;
+              </code></pre>
+          </section>
+          <section>
+            <h4>References</h4>
+            <ul>
+              <li><b>getContext()</b>, method that accepts a parameter of 2d and returns a CanvasRenderingContext2D object that represents the canvas context.</li>
+              <li><b>toDataUrl()</b>, method that creates a URL that can be used with an element that requires an image URL, such as the <code>&lt;img&gt;</code> element</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Implementing Canvas</h4>
+            <div class="row">
+              <canvas id="1myCanvas" width="800" height="600">
+                  You need a browser that supports HTML5!
+              </canvas>
+              <button onclick="draw1()">Push me </button>
+              <script>
+                
+                function draw1() {
+                  let canvas = document.getElementById('1myCanvas');
+                  let ctx = canvas.getContext('2d');
+                  ctx.fillRect(10, 50, 100, 200);
+                }
+              </script>
+            </div>
+          </section>
+          <section>
+            <h4>Drawing rectangles</h4>
+            <ul>
+              <li><b>clearRect(x,y,w,h)</b>, clear the specified rectangular area</li>
+              <li><b>fillRect(x,y,w,h)</b>, draw a filled rectangular area.</li>
+              <li><b>strokeRect(x,y,w,h)</b>, Draw an unfilled rectangular area.</li>
+            </ul>
+            <div class="row">
+                <canvas id="2myCanvas" width="800" height="600">
+                    You need a browser that supports HTML5!
+                </canvas>
+                <button onclick="draw2()">Push me</button>
+                <script>
+                  function draw2() {
+                    let canvas = document.getElementById('2myCanvas');
+                    let ctx = canvas.getContext('2d')
+                      , offset = 15
+                      , clearOffset = 30
+                      , pushDownOffset = 10
+                      , height = 50
+                      , width = 100
+                      , count = 4
+                      , i = 0;
+
+                      for (i = 0; i < count; i++) {
+                        ctx.fillRect(i * (offset + width) + offset, offset, width, height);
+                        ctx.clearRect(i * (offset + width) + (clearOffset / 2) + offset,
+                                offset + (clearOffset / 2) + pushDownOffset,
+                                width - clearOffset, height - clearOffset)
+                        ctx.strokeRect(i * (offset + width) + offset, 
+                                (2 * offset) + height, width, height);
+                      }
+                  }
+                </script>
+              </div>
+          </section>
+          <section>
+              <h4>Confifuring the drawing state</h4>
+              <ul>
+                <li><b>clearRect(x,y,w,h)</b>, clear the specified rectangular area</li>
+                <li><b>fillRect(x,y,w,h)</b>, draw a filled rectangular area.</li>
+                <li><b>strokeRect(x,y,w,h)</b>, Draw an unfilled rectangular area.</li>
+              </ul>
+              <div class="row">
+                  <canvas id="2myCanvas" width="800" height="600">
+                      You need a browser that supports HTML5!
+                  </canvas>
+                  <button onclick="draw2()">Push me</button>
+                  <script>
+                    function draw2() {
+                      let canvas = document.getElementById('2myCanvas');
+                      let ctx = canvas.getContext('2d')
+                        , offset = 15
+                        , clearOffset = 30
+                        , pushDownOffset = 10
+                        , height = 50
+                        , width = 100
+                        , count = 4
+                        , i = 0;
+  
+                        for (i = 0; i < count; i++) {
+                          ctx.fillRect(i * (offset + width) + offset, offset, width, height);
+                          ctx.clearRect(i * (offset + width) + (clearOffset / 2) + offset,
+                                  offset + (clearOffset / 2) + pushDownOffset,
+                                  width - clearOffset, height - clearOffset)
+                          ctx.strokeRect(i * (offset + width) + offset, 
+                                  (2 * offset) + height, width, height);
+                        }
+                    }
+                  </script>
+                </div>
+            </section>
+          Summary: <br /> 
+          MPEG-4/H.264 is the most common format, it has the better perfomance(data-stream size to picture quality) although it isn't a big difference. many existing mobie devices have MPEG-4/H.264 hardware decoders, which cannot be ignored.
+        </section>
+        <hr>
+      </div>
+    </hgroup>
+  </body>
+
+  <footer style="height:20%; margin:10%;">
+    <hr>
+    70-480 hoofdstuk 12
+  </footer>
+</html>

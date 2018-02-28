@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <header>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </header>
+  <body>
+    <hgroup name="video" class="container">
+      <section class="container">
+        <hr>
+        <h1>Video formats</h1> 
+        <hr>
+        <ul>
+          <li>Ogg/Theora(.ogv extension), free without patent issues. this format is supported by Firefox, Chrome and Opera browsers.</li>
+          <li>WebM/VP8(.webm extension), WebM is royalty-free under Berkeley Software Distribution(BSD) open-source license. Works well on low-power devices, including netbooks and handhelds. Works on Firefox, Chrome, Opera and Android an IE 9+</li>
+          <li>MPEG-4/H.264(.mp4 extension), capable of providing good video quality at substanitally lower bit rates than previous stands. has patented technologies, H.264-encoded internet video that is free to end users will never be charged royalties. Supported by IE, Chrome and Safari, Chrome has announced its intent to remove support for the extension in the near future.</li>
+        </ul>
+        Summary: <br />
+        MPEG-4/H.264 is the most common format, it has the better perfomance(data-stream size to picture quality) although it isn't a big difference. many existing mobie devices have MPEG-4/H.264 hardware decoders, which cannot be ignored.
+      </section>
+      <hr>
+      <div class="row">
+        <section class="col-sm-6">
+          <h4>Implementing the <code>&lt;video&gt;</code> element</h4>
+
+          <p> simple implementation of the video element</p>
+          <pre><code>
+            &lt;video width="320" height="240" controls="controls"&gt;
+              &lt;source src="movie.mp4" /&gt;
+              You need a browser that supports HTML5!
+            &lt;/video&gt;
+          </code></pre>
+        </section>
+
+        <section class="col-sm-6">
+          <h4>Result</h4>
+          <video width="320" height="240" controls="controls">
+              <source src="https://www.youtube.com/embed/QQ41QIrRLT0" type='video/webm; codecs="vorbis, vp8"' />
+              <source src="https://www.youtube.com/embed/QQ41QIrRLT0" type='video/ogg; codecs="theora, vorbis"' />
+              <source src="https://www.youtube.com/embed/QQ41QIrRLT0" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+              You need a browser that supports HTML5!
+          </video>
+        </section>
+        
+        <section class="col-sm-6">
+          <h4>Configuring the <code>&lt;video&gt;</code> element</h4>
+          <ul>
+              <li><b>autoplay</b>, start the video immediately.</li>
+              <li><b>controls</b>, display <i>play/pause</i> button, video cursor and fullscreen</li>
+              <li><b>height</b>, set height</li>
+              <li><b>loop</b>, video will repeat</li>
+              <li><b>muted</b>, audio in video is silenced</li>
+              <li><b>poster</b>,specifies to show URL of an image is to be shown when the video is not playing</li>
+              <li><b>preload</b>, how the video should load <i> auto, metadata</i> or <i>none</i></li>
+              <li><b>src</b>, specifies the URL of the video.</li>
+              <li><b>width</b>, indicates the width in pixels of the rendered <code>&lt;video&gt;</code> element.</li>
+            </ul>
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <hr>
+          <h4>Setting the source</h4>
+          <p>
+            the <source> element specifies a video source, you should provide more then one source this way the browser can shoose the format it can use. The recommended order is:  
+              <ul>
+                <li><b>.webm(royalty-free)</b>,</li>
+                <li><b>.ogv(royalty-free)</b>,</li>
+                <li><b>.mp4(not always royalty-free)</b>.</li>
+              </ul>
+          </p>
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <hr>
+          <h4>Accessing tracks</h4>
+          <p>
+            W3C developed a new standard called WebVTT(Web Video Text Tracks). all browsers implementing <code>&lt;track&gt;</code> element, will support it. WebVTT is based on a popular subtitling format called SubRip Text(SRT).
+            <h5>Using the WebVTT format.</h5>
+            <pre><code>
+              WEBVTT File
+
+              00:00:07.500 --> 00:00:08.750
+              He's fidgety.
+
+              NOTE I think the timing should be adjusted to span to the end of the video
+              00:00:09.000 --> 00:00:12.000
+              There he goes!
+            </code></pre>
+            The WebVTT format is evolving and provides for other features that are not currently supported on most browsers.
+          </p>  
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <hr>
+          <h5>Lesson Review</h5>
+          <ol>
+            <li>My answer: B. The browser will automatically doanload the codec and play the video.</li>
+            <ul><li style="background:red;">Correct answer: A. The browser must support the codec that is specified but does not attempt to download the specified codec automatically</li></ul>
+            <li>My answer: A. .webm and D. .mp4</li>
+            <ul><li style="background:green;">I Answered correct!</li></ul>
+            <li>My answer: E. No standard has been selected.</li>
+            <ul><li style="background:green;">I Answered correct!</li></ul>            
+          </ol>
+        </section>
+      </div>
+    </hgroup>
+    <hgroup name="audio" class="container">
+      <section class="container">
+        <hr>
+        <h1>Audio formats</h1> 
+        <hr>
+        <ul>
+          <li>Ogg/Theora(.oga extension), free without patent issues. this format is supported by Firefox, Chrome and Opera browsers. <b>codec: vorbis</b></li>
+          <li>MP3(.mp3 extension),pervasive format, supported by Safari, Chrome and Internet Explorer. MIME type is <i>audio/mpeg</i> <b>codec: .mp3</b></li>
+          <li>MP4(.mp4, .mp4a, .aac extension), primarily used by Apple. Supported by on Internet Explorer and Safari. <b>codec: .mp4a.40.5</b></li>
+          <li>WAV(.wav extension), format is pervasive used for audio fragments <b>codec: 1</b></li>
+        </ul>
+      </section>
+      <hr>
+      <div class="row">
+        <section class="col-sm">
+          <h4>Implementing the <code>&lt;audio&gt;</code> element</h4>
+
+          <p> simple implementation of the audio element</p>
+          <pre><code>
+            &lt;audio controls="controls"&gt;
+              &lt;source src="song.mp3" /&gt;
+              You need a browser that supports HTML5!
+            &lt;/audio&gt;
+          </code></pre>
+        </section>
+
+        <section class="col-sm">
+          <h4>Result</h4>
+          <audio controls="controls">
+              <source src="song.oga" type='audio/ogg; codecs="vorbis"' />
+              <source src="song.wav" type='audio/wav; codecs="1"' />
+              <source src="song.mp3" type='audio/mpeg; codecs="mp3"' />
+              You need a browser that supports HTML5!
+          </audio>
+        </section>
+        
+        <section class="col-medium">
+          <h4>Configuring the <code>&lt;audio&gt;</code> element</h4>
+          <ul>
+              <li><b>autoplay</b>, start the video immediately.</li>
+              <li><b>controls</b>, display <i>play/pause</i> button, audio cursor and fullscreen</li>
+              <li><b>height</b>, set height</li>
+              <li><b>loop</b>, audio will repeat</li>
+              <li><b>preload</b>, how the audio should load <i> auto, metadata</i> or <i>none</i></li>
+              <li><b>src</b>, specifies the URL of the video.</li>
+            </ul>
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <hr>
+          <h5>Lesson Review</h5>
+          <ol>
+            <li>My answer: A. .mp4, B. .wav, C. .mp3</li>
+            <ul><li style="background:red;"> Only C. is correct, A. is not compatible with Chrome. B. is not compatible with Internet Explorer.</li></ul>
+            
+            <li>My answer: B. .oga and D. .wav</li>
+            <ul><li style="background:red;">B&D are correct but also A. .mp4 is becoming popular with the latest browsers</li></ul>
+          </ol>
+        </section>
+      </div>
+    </hgroup>
+    <hgroup name="HTMLMediaElement" class="container">
+        <hr>
+      <section class="container">
+        <h1>Using the HTMLMediaElement object</h1> 
+        <p>
+          The <code>&lt;video&gt;</code> & <code> &lt;audio&gt;</code> elements inherit from the HTMLMediaElement object.
+        </p>
+      </section>
+      <hr>
+      <div class="row">
+        <section class="col-sm">
+          <h4>Understanding the HTMLMediaElement methods</h4>
+          <ul>
+            <li><b>addTextTrack()</b>, Adds a new text track to the audio or video</li>
+            <li><b>canPlayType()</b>, Determines wheter the browser can play the specified audio or video type</li>
+            <li><b>load()</b>, Reloads the audio or video</li>
+            <li><b>play()</b>, Plays the audio or video</li>
+            <li><b>pause()</b>, Pauses the currentyle playing audio or video</li>
+          </ul>
+        </section>
+      </div>
+      <div class="row">
+        <section>
+          <h5>Using HTMLMediaElement properties</h5>
+          <p>
+            In addition to the methods that enable you to control playback, you can us many properties to view or set the state of the <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code> element.
+          </p>
+        </section>
+        <section>
+            <h5>Subscribing to HTMLMediaElement events</h5>
+            <p>
+              In addition to the methods properties of HTMLMediaElement, it is also possible to subscribe to events.
+            </p>
+        </section>
+      </div>
+      <hr>
+      <div class="row">
+        <section>
+            <h5>Lesson review</h5>
+            <p>
+              <ul>
+                <li>My Answer: A. HTMLMediaElement</li>
+                <ul><li style="background:green;">I Answered correct!</li></ul>
+                <li>My Answer: D. loop</li>
+                <ul><li style="background:green;">I Answered correct!</li></ul>
+                <li>My Answer: D. onloadeddata</li>
+                <ul><li style="background:green;">I Answered correct!</li></ul>
+              </ul>
+            </p>
+        </section>
+      </div>
+    </hgroup>
+  </body>
+
+  <footer style="height:20%; margin:10%;">
+    <hr>
+    70-480 hoofdstuk 11
+  </footer>
+</html>
